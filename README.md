@@ -1,10 +1,16 @@
 # Tradeapp
 
-Free-first, multi-platform automated-trading foundation.
+Free-first autonomous trading platform core for Windows and Android.
 
-Phase 1-5 foundation: architecture, auth contracts, shared client boundaries, exchange/broker adapters, and normalized market data with a deterministic paper adapter.
+Current status:
+- Phases 1-40: foundation implemented and CI-verified.
+- Phases 40-45: controlled-readiness hardening.
+- Real-money trading remains disabled by design.
+- Sandbox/paper validation is supported; production trading requires separate real-world validation.
 
-Live trading is disabled by default. Real integrations must use official APIs/authentication and should not receive withdrawal permission.
-
-## Phase 6-10
-Market regime detection, strategy council/lab, local explainability and news intelligence are implemented and tested before live execution is enabled.
+Safety principles:
+- No withdrawal permission.
+- Kill switch and manual stop.
+- Reconciliation after connectivity failures.
+- Bounded retry behavior.
+- Release evidence before any controlled rollout.

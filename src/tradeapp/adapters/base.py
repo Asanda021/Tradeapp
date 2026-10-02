@@ -1,0 +1,16 @@
+from abc import ABC, abstractmethod
+from typing import Sequence
+from tradeapp.domain.models import AccountSnapshot, Candle, OrderRequest, OrderResult, Quote
+
+class TradingAdapter(ABC):
+    name: str
+    @abstractmethod
+    def account(self) -> AccountSnapshot: ...
+    @abstractmethod
+    def quote(self, symbol: str) -> Quote: ...
+    @abstractmethod
+    def candles(self, symbol: str, limit: int = 100) -> Sequence[Candle]: ...
+    @abstractmethod
+    def submit_order(self, request: OrderRequest) -> OrderResult: ...
+    @abstractmethod
+    def cancel_order(self, order_id: str) -> bool: ...

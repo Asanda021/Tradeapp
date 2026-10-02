@@ -49,6 +49,11 @@ def default_campaign() -> AcceptanceCampaign:
         ("08_news", "Real multi-source news intelligence"),
         ("09_recovery", "Network/crash/order recovery"),
         ("10_security", "Production security audit"),
+        ("11_windows", "Windows build, install and UX validation"),
+        ("12_android", "Android APK, install and UX validation"),
+        ("13_e2e", "End-to-end application flow validation"),
+        ("14_release_evidence", "Release evidence completeness"),
+        ("15_controlled_live", "Controlled-live preflight gate"),
     )
     c = AcceptanceCampaign()
     for key, title in titles:

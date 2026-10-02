@@ -23,18 +23,18 @@ def detect_regime(candles: list[Candle]) -> RegimeSnapshot:
         return RegimeSnapshot(MarketRegime.UNKNOWN, Decimal("0"), Decimal("0"))
     closes=[float(c.close) for c in candles]
     first,last=closes[0],closes[-1]
-    avg=max(abs(mean(closes)), 1e-12)
+    avg=max(abs(mean(closes)),1e-12)
     trend=Decimal(str((last-first)/avg))
     returns=[(b-a)/max(abs(a),1e-12) for a,b in zip(closes,closes[1:])]
     vol=Decimal(str(pstdev(returns) if len(returns)>1 else 0))
     if vol > Decimal("0.02"):
         regime=MarketRegime.HIGH_VOLATILITY
-    elif vol < Decimal("0.002"):
-        regime=MarketRegime.LOW_VOLATILITY
     elif trend > Decimal("0.01"):
         regime=MarketRegime.TREND_UP
     elif trend < Decimal("-0.01"):
         regime=MarketRegime.TREND_DOWN
+    elif vol < Decimal("0.002"):
+        regime=MarketRegime.LOW_VOLATILITY
     else:
         regime=MarketRegime.RANGE
     return RegimeSnapshot(regime,vol,trend)

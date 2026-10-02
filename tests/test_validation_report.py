@@ -10,9 +10,9 @@ def test_default_report_never_invents_real_world_evidence():
 def test_report_distinguishes_automated_and_real_world():
     campaign = AcceptanceCampaign([
         AcceptanceItem("auto", "automated", True, False, True, "ci"),
-        AcceptanceItem("real", "real", True, True, False, ""),
+        AcceptanceItem("real", "real", False, True, False, ""),
     ])
     report = build_report(campaign)
-    assert report.automated_missing == ("real",)
+    assert report.automated_missing == ()
     assert report.real_world_missing == ("real",)
     assert report.status == "AUTOMATED_VALIDATION_COMPLETE_REAL_EVIDENCE_MISSING"

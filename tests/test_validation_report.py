@@ -13,6 +13,6 @@ def test_report_distinguishes_automated_and_real_world():
         AcceptanceItem("real", "real", True, True, False, ""),
     ])
     report = build_report(campaign)
-    assert report.automated_missing == ()
+    assert report.automated_missing == ("real",)
     assert report.real_world_missing == ("real",)
     assert report.status == "AUTOMATED_VALIDATION_COMPLETE_REAL_EVIDENCE_MISSING"

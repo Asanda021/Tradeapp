@@ -46,7 +46,7 @@ class BinanceSpotClient:
     def klines(self,symbol: str,interval: str="1m",limit: int=200) -> list:
         if not symbol: raise ValueError("symbol is required")
         if not 1 <= limit <= 1000: raise ValueError("limit must be 1..1000")
-        url=f"{self.base_url}/api/v3/klines?{urlencode({'symbol':symbol.upper(),'interval':interval,'limit':limit)}"
+        url=f"{self.base_url}/api/v3/klines?{urlencode({'symbol':symbol.upper(),'interval':interval,'limit':limit})}"
         return self.transport.request("GET",url,{})
 
     def place_order(self,params: dict) -> dict:

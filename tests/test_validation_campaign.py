@@ -1,8 +1,8 @@
 from tradeapp.validation.acceptance import AcceptanceItem, default_campaign
 
-def test_campaign_has_ten_real_world_gates():
+def test_campaign_has_fifteen_real_world_gates():
     campaign = default_campaign()
-    assert len(campaign.items) == 10
+    assert len(campaign.items) == 15
     assert campaign.status() == "VALIDATION_INCOMPLETE"
 
 def test_verified_evidence_completes_campaign():
